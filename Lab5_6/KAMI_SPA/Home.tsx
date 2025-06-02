@@ -56,8 +56,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 10,
+    marginTop:30,
   },
-  header: {fontSize: 18, fontWeight: 'bold'},
+  header: {fontSize: 20, fontWeight: 'bold',color: '#e91e63',},
   item: {
     padding: 15,
     borderWidth: 1,

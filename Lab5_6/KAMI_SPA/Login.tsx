@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet } from 'react-native';
-import { login } from '../services/api';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+  StyleSheet,
+} from 'react-native';
+import {login} from '../services/api';
 
-const LoginScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
+const LoginScreen: React.FC<{navigation: any}> = ({navigation}) => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
     try {
       await login(phone, password);
-      navigation.replace('Home');
+      navigation.replace('Main');
     } catch (err) {
       Alert.alert('Login Failed', 'Invalid phone or password');
     }
@@ -40,7 +47,7 @@ const LoginScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 20, flex: 1, justifyContent: 'center' },
+  container: {padding: 20, flex: 1, justifyContent: 'center'},
   title: {
     fontSize: 60,
     textAlign: 'center',
@@ -58,7 +65,7 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 20,
     padding: 10,
-    backgroundColor: '#E34C66', 
+    backgroundColor: '#E34C66',
     borderRadius: 10,
     alignItems: 'center',
   },
