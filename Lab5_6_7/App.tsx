@@ -11,6 +11,8 @@ import AddCustomerScreen from './KAMI_SPA/AddCustomer';
 import BottomTabs from './KAMI_SPA/BottomTabs';
 import TransactionScreen from './KAMI_SPA/Transaction';
 import TransactionDetailScreen from './KAMI_SPA/TransactionDetail';
+import CustomerDetailScreen from './KAMI_SPA/CustomerDetail';
+import EditCustomerScreen from './KAMI_SPA/EditCustomer';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -33,6 +35,9 @@ const App = () => {
         <Stack.Screen name="Customer" component={CustomerScreen} />
         <Stack.Screen name="AddCustomer" component={AddCustomerScreen} />
         <Stack.Screen name="Transaction" component={TransactionScreen} />
+        <Stack.Screen name="CustomerDetail" component={CustomerDetailScreen} />
+        <Stack.Screen name="EditCustomer" component={EditCustomerScreen} />
+
         <Stack.Screen
           name="TransactionDetail"
           component={TransactionDetailScreen}

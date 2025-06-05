@@ -17,20 +17,24 @@ const CustomerScreen: React.FC<{navigation: any}> = ({navigation}) => {
   }, [isFocused]);
 
   const renderItem = ({item}: {item: Customer}) => (
-    <View style={styles.card}>
-      <Text style={styles.textBold}>
-        Customer: <Text style={styles.textNormal}>{item.name}</Text>
-      </Text>
-      <Text>Phone: {item.phone}</Text>
-      <Text>
-        Total money:{' '}
-        <Text style={styles.money}>{item.totalSpent.toLocaleString()} đ</Text>
-      </Text>
-      <Text style={styles.loyalty}>
-        {item.loyalty === 'member' ? 'Member' : 'Guest'}
-      </Text>
-    </View>
-  );
+  <TouchableOpacity
+    style={styles.card}
+    onPress={() => navigation.navigate('CustomerDetail', { id: item._id })}
+  >
+    <Text style={styles.textBold}>
+      Customer: <Text style={styles.textNormal}>{item.name}</Text>
+    </Text>
+    <Text>Phone: {item.phone}</Text>
+    <Text>
+      Total money:{' '}
+      <Text style={styles.money}>{item.totalSpent.toLocaleString()} đ</Text>
+    </Text>
+    <Text style={styles.loyalty}>
+      {item.loyalty === 'member' ? 'Member' : 'Guest'}
+    </Text>
+  </TouchableOpacity>
+);
+
 
   return (
     <View style={styles.container}>

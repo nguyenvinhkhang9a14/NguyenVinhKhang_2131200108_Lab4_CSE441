@@ -74,11 +74,62 @@ export const addCustomer = async (name: string, phone: string) => {
     },
   );
 };
+
+export const deleteCustomer = async (id: string) => {
+  const token = await AsyncStorage.getItem('token');
+  return axios.delete(`${BASE_URL}/customers/${id}`, {
+    headers: {Authorization: `Bearer ${token}`},
+  });
+};
+
+export const getCustomerById = async (id: string): Promise<Customer> => {
+  const token = await AsyncStorage.getItem('token');
+  const res = await axios.get(`${BASE_URL}/customers/${id}`, {
+    headers: {Authorization: `Bearer ${token}`},
+  });
+  return res.data;
+};
+
+export const updateCustomer = async (
+  id: string,
+  body: {name: string; phone: string},
+  token: string,
+) => {
+  const res = await axios.put(`${BASE_URL}/customers/${id}`, body, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return res.data;
+};
+
 export const getTransactions = async (): Promise<Transaction[]> => {
   const token = await AsyncStorage.getItem('token');
   const res = await axios.get(`${BASE_URL}/transactions`, {
     headers: {Authorization: `Bearer ${token}`},
   });
   console.log('Transactions response:', res.data);
+  return res.data;
+};
+
+export const getTransactionsByCustomer = async (
+  customerId: string,
+): Promise<Transaction[]> => {
+  const token = await AsyncStorage.getItem('token');
+  const res = await axios.get(`${BASE_URL}/transactions`, {
+    headers: {Authorization: `Bearer ${token}`},
+  });
+  return res.data.filter((tx: Transaction) => tx.customer._id === customerId);
+};
+
+export const deleteTransaction = async (id: string) => {
+  const token = await AsyncStorage.getItem('token');
+  if (!token) {throw new Error('No token found');}
+  const res = await axios.delete(`${BASE_URL}/transactions/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
   return res.data;
 };
