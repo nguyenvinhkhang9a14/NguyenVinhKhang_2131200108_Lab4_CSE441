@@ -61,20 +61,20 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator
       initialRouteName="ContactsScreens"
-      barStyle={{ backgroundColor: 'blue' }}
+      barStyle={{ backgroundColor: 'green' }}
       labeled={false}
       activeColor="lightgray"
       inactiveColor="greyDark"
     >
       <Tab.Screen
-        name="Contacts"
+        name="ContactsTab"
         component={ContactsScreens}
         options={{
           tabBarIcon: 'format-list-bulleted',
         }}
       />
       <Tab.Screen
-        name="Favorites"
+        name="FavoritesTab"
         component={FavoriteScreens}
         options={{
           tabBarIcon: 'star-check',
